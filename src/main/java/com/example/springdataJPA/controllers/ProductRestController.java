@@ -2,9 +2,12 @@ package com.example.springdataJPA.controllers;
 
 import com.example.springdataJPA.entities.Product;
 import com.example.springdataJPA.repository.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +27,8 @@ public class ProductRestController {
     }
 
     @GetMapping("/products/{id}")
+    @Transactional
+    @Cacheable("product-cache")
     public Product getAllProducts(@PathVariable Long id)
     {
         LOGGER.info("Finding product by id - "+id);
@@ -43,6 +48,7 @@ public class ProductRestController {
     }
 
     @DeleteMapping("/products/{id}")
+    @CacheEvict("product-cache")
     public void deleteProducts(@PathVariable Long id)
     {
         repository.deleteById(id);
