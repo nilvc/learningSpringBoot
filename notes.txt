@@ -1,0 +1,33 @@
+1. Spring security :
+
+
+In pom.xml we need "spring-boot-starter-security" dependency
+This will by default provide username as "user" and a password on console.
+We can provide/ customize this , tbd
+
+
+2. Adding health check and metrics
+
+management.endpoint.health.show-details=always
+&
+dependency -> "spring-boot-starter-actuator"
+
+Above property in application.properties will enable various metrics in spring boot app
+will be available at  /actuator endpoint.
+The endpoint can be customized.
+
+
+3. THYMELEAF :
+
+It is templating engine.
+Helps in creating dynamic HTML content.
+
+@{url}
+${el}
+*{propertyName}
+
+4. Caching
+
+Hibernate is the most commonly used ORM in spring boot.
+Hazelcast - cache in spring boot.
+
