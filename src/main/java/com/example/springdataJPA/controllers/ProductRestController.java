@@ -3,6 +3,7 @@ package com.example.springdataJPA.controllers;
 import com.example.springdataJPA.entities.Product;
 import com.example.springdataJPA.repository.ProductRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ProductRestController {
     }
 
     @PostMapping("/products")
-    public Product createProduct(@RequestBody Product product)
+    public Product createProduct(@Valid @RequestBody Product product)
     {
         return repository.save(product);
     }

@@ -31,3 +31,16 @@ ${el}
 Hibernate is the most commonly used ORM in spring boot.
 Hazelcast - cache in spring boot.
 
+
+5. Validations
+
+https://www.geeksforgeeks.org/spring-boot-validation-using-hibernate-validator/
+
+You can put default validation on entites for checking their values before inserted the data.
+dependency - <spring-boot-starter-validation>
+
+1. You need to mark your post/put request with @Valid annotation.
+2. In Entities apply required validation to specific fields
+EG. @NotNull , @Size -> for string to specify min/max length.
+    @Min, @Max for numbers etc.
+
